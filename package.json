@@ -1,0 +1,51 @@
+{
+  "name": "cycoder-server",
+  "version": "1.0.4",
+  "description": "Socket server with storage redis or nats",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "commonjs",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rm -fv -r dist && tsc -p .",
+    "prepack": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reynaldiaznan123/cycoder-server.git"
+  },
+  "keywords": [
+    "Websocket",
+    "Socket",
+    "Server"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reynaldiaznan123/cycoder-server/issues"
+  },
+  "homepage": "https://github.com/reynaldiaznan123/cycoder-server#readme",
+  "devDependencies": {
+    "@types/lodash": "^4.14.165",
+    "@types/node": "^14.14.14",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.9.2",
+    "fastify-formbody": "^5.0.0",
+    "fastify-multipart": "^3.3.1",
+    "lodash": "^4.17.20",
+    "log-symbols": "^4.0.0",
+    "middie": "^5.2.0",
+    "notepack.io": "^2.3.0",
+    "redis": "^3.0.2",
+    "socket.io": "^3.0.4",
+    "socket.io-adapter": "^2.0.3",
+    "ts-nats": "^1.2.15",
+    "uuid": "^8.3.2"
+  }
+}
