@@ -21,7 +21,10 @@
     "Socket",
     "Server"
   ],
-  "author": "",
+  "author": {
+    "name": "Reynaldi Aznan",
+    "email": "reynaldiaznan450@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/reynaldiaznan123/cycoder-server/issues"

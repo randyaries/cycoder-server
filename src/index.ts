@@ -62,10 +62,10 @@ export class Ecosystem {
     }
 
     public listen(...args: any): Promise<{io: any, http: any}> {
-        return new Promise(async (resolve, reject) => {
+        return new Promise((resolve, reject) => {
             this.server.init().then((timer) => {
-                setTimeout(async () => {
-                    await this.server.app.listen(...args);
+                setTimeout(() => {
+                    this.server.app.listen(...args);
 
                     timer && clearInterval(timer);
                     this.init();
