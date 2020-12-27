@@ -133,27 +133,39 @@ export class Ecosystem {
     private findSocketById(id: string, name?: string): Socket {
         const nsp = this.findNspByName(name);
         if (!!nsp) {
-            return nsp.clients.find(val => val.id === id);
+            return nsp.clients.find((val: any) => val.id === id);
         }
 
-        return this.clients.find(val => val.id === id);
+        return this.clients.find((val: any) => val.id === id);
     }
 
     private findNspByName(name: any): any {
-        const nsp = this.nsps.find(val => new RegExp(val.name).test(name));
+        const nsp = this.nsps.find((val: any) => new RegExp(val.name).test(name));
 
         return nsp ?? null;
     }
 
     private others(socket: Socket, channel: string, message: any): void {
-        socket.broadcast.to(channel).emit(message.event, message);
+        message = this.parser(message);
+        socket.broadcast.to(channel).emit(message.event, channel, message.data);
     }
 
     private all(channel: string, message: any, name?: any): void {
         const nsp = this.findNspByName(name);
         const socket = !!nsp ? nsp.socket : this.server.io;
 
-        socket.to(channel).emit(message.event, message);
+        message = this.parser(message);
+        socket.to(channel).emit(message.event, channel, message.data);
+    }
+
+    private parser(message: any): any {
+        const event = message.event;
+        delete message.event;
+
+        message = typeof message.data === 'object'
+            ? Object.assign({ socket: message.socket }, message.data) : message;
+        
+        return { event, data: message };
     }
 
     /**

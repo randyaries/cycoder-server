@@ -1,6 +1,6 @@
 {
   "name": "cycoder-server",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Socket server with storage redis or nats",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -24,8 +24,8 @@ export class RedisSubscriber implements Subscriber {
                             Log.default(`Channel: ${channel}`);
                             Log.default(`Event: ${message.event}`);
                         }
-
-                        callback(channel.substring(prefix.length), message);
+                        
+                        callback(channel.substring(prefix.length), message.event, message);
                     }
                 } catch (e) {
                     if (this.options.dev) {

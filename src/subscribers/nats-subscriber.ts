@@ -36,7 +36,7 @@ export class NatsSubscriber implements Subscriber {
                                 Log.default(`Event: ${message.event}`);
                             }
 
-                            callback(msg.subject.substring(prefix.length), message);
+                            callback(msg.subject.substring(prefix.length), message.event, message);
                         }
                     } catch (e) {
                         if (this.options.dev) {

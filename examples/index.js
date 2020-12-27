@@ -1,5 +1,5 @@
 const { createServer } = require('../dist/index');
-const port = 3002;
+const port = 3000;
 const host = 'localhost';
 
 createServer({
@@ -17,12 +17,4 @@ createServer({
         redis: false,
         nats: false,
     }
-})
-.of(/^\/dynamic-\d+$/)
-.listen(port, host, () => {
-    console.log(`Listening to serve http://${host}:${port}\n`);
-}).then(({ io, http }) => {
-    http.get('/', (req, res) => {
-        res.send({ message: 'Hello world!' });
-    });
-});
+}).listen(port);
